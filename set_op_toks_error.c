@@ -1,36 +1,44 @@
 #include "monty.h"
 
 /**
- * set_op_tok_error - Sets last element of op_toks to be an error code.
- * @error_code: Integer to store as a string in op_toks.
- */
-void set_op_tok_error(int error_code)
+ * checkfile - hekcs if the file filed to open
+ * @file: the expected file
+ * @filename: the name of the file
+*/
+void checkfile(FILE *file, char *filename)
 {
-	int toks_len = 0, i = 0;
-	char *exit_str = NULL;
-	char **new_toks = NULL;
-
-	toks_len = token_arr_len();
-	new_toks = malloc(sizeof(char *) * (toks_len + 2));
-	if (!op_toks)
+	if (file == NULL)
 	{
-		malloc_error();
-		return;
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		exit(EXIT_FAILURE);
 	}
-	while (i < toks_len)
+}
+/**
+ * argcount - function to monitor the argunemnt count from main
+ * @n: number of argument
+*/
+void argcount(int n)
+{
+	if (n != 2)
 	{
-		new_toks[i] = op_toks[i];
-		i++;
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
 	}
-	exit_str = get_int(error_code);
-	if (!exit_str)
-	{
-		free(new_toks);
-		malloc_error();
-		return;
-	}
-	new_toks[i++] = exit_str;
-	new_toks[i] = NULL;
-	free(op_toks);
-	op_toks = new_toks;
+}
+/**
+ * mallocerror - Prints if malloc fails
+*/
+void mallocerror(void)
+{
+	fprintf(stderr, "Error: malloc failed\n");
+	exit(EXIT_FAILURE);
+}
+/**
+ * instructionerror - Prints if instruction is unkown
+ * @n: line number
+*/
+void instructionerror(int n)
+{
+	fprintf(stderr, "L%u: unknown instruction %s\n", n, line_token[0]);
+	exit(EXIT_FAILURE);
 }
