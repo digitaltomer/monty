@@ -4,6 +4,7 @@
  * monty_queue_mode - Sets the format of data to a stack(LIFO)
  * @stack: Double pointer to the top of a stack_t linked list
 */
+
 void monty_queue_mode(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
 	stack_t *mode = malloc(sizeof(stack_t));
@@ -21,6 +22,7 @@ void monty_queue_mode(stack_t **stack, __attribute__((unused))unsigned int line_
  * monty_stack_mode - Sets the format of data to a stack(LIFO)
  * @stack: Double pointer to the top of a stack_t linked list
 */
+
 void monty_stack_mode(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
 	stack_t *mode = malloc(sizeof(stack_t));
@@ -38,6 +40,7 @@ void monty_stack_mode(stack_t **stack, __attribute__((unused))unsigned int line_
  * monty_push_stack - Pushes a node in stack mode
  * @stack: Double pointer to the top of a stack_t linked list
 */
+
 void monty_push_stack(stack_t **stack)
 {
 	stack_t *new, *temp;
@@ -62,6 +65,7 @@ void monty_push_stack(stack_t **stack)
  * monty_push_queue - Pushes a node in queue mode
  * @stack: Double pointer to the top of a stack_t linked list
 */
+
 void monty_push_queue(stack_t **stack)
 {
 	stack_t *new, *nav;
